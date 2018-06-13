@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "ts-node ./src/app.ts",
-    "dev": "ts-node-dev ./src/app.ts"
+    "dev": "ts-node-dev ./src/app.ts",
+    "migrate": "knex migrate:latest"
   },
   "keywords": [],
   "author": "",
@@ -16,7 +17,10 @@
     "express-graphql": "0.6.12",
     "graphql": "0.13.2",
     "graphql-tools": "3.0.2",
-    "mongoose": "5.1.5",
+    "knex": "0.14.6",
+    "morgan": "1.9.0",
+    "objection": "1.1.10",
+    "sqlite3": "4.0.0",
     "ts-node": "6.1.1",
     "typescript": "2.9.1"
   },
