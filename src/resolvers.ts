@@ -48,5 +48,12 @@ export const resolvers = {
     async createProduct(root: any, { input }: { input: ProductInput }) {
       return await Product.create(input)
     },
+
+    async updateProduct(
+      root: any,
+      { _id, input }: { _id: string; input: ProductInput }
+    ) {
+      return await Product.findOneAndUpdate({ _id }, input, { new: true })
+    },
   },
 }

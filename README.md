@@ -8,6 +8,8 @@ npm start
 open localhost:3000/g
 ```
 
+You can watch files and auto reload on change with `npm run dev`
+
 ## Query details
 
 Types with `!` are non-nullable.

@@ -22,6 +22,7 @@ const typeDefs = `
 
   type Mutation {
     createProduct(input: ProductInput): Product
+    updateProduct(_id: ID, input: ProductInput): Product
   }
 `
 
