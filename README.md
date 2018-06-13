@@ -5,4 +5,5 @@ Based on Egghead.io [course](https://egghead.io/lessons/graphql-create-express-s
 ```
 npm install
 npm start
+open localhost:3000/g
 ```
