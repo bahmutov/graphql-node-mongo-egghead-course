@@ -30,3 +30,6 @@ To request `greet` use
 }
 ```
 
+## Running MongoDB
+
+Via docker with `docker run -p 27017:27017 mongo:3` (see logs) or `docker run -p 27017:27017 -d mongo:3` (running in the background)

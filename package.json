@@ -15,12 +15,14 @@
     "express-graphql": "0.6.12",
     "graphql": "0.13.2",
     "graphql-tools": "3.0.2",
+    "mongoose": "5.1.5",
     "ts-node": "6.1.1",
     "typescript": "2.9.1"
   },
   "devDependencies": {
     "@types/express": "4.16.0",
     "@types/express-graphql": "0.6.1",
+    "@types/mongoose": "5.0.15",
     "prettier": "1.13.5",
     "ts-node-dev": "1.0.0-pre.26"
   }

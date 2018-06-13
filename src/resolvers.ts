@@ -1,15 +1,28 @@
-const products = [
-  {
-    _id: '12',
-    name: 'foo',
-    qty: 1,
-  },
-  {
-    _id: '13',
-    name: 'bar',
-    qty: 2,
-  },
-]
+import Product from './models/product'
+
+type Product = {
+  _id: string
+  name: string
+  qty: number
+}
+
+// const products: Product[] = [
+//   {
+//     _id: '1',
+//     name: 'foo',
+//     qty: 1,
+//   },
+//   {
+//     _id: '2',
+//     name: 'bar',
+//     qty: 2,
+//   },
+// ]
+
+type ProductInput = {
+  name: string
+  qty: number
+}
 
 export const resolvers = {
   Query: {
@@ -22,8 +35,18 @@ export const resolvers = {
       return `Hello ${msg}`
     },
 
-    allProducts() {
-      return products
+    async allProducts() {
+      return await Product.find()
+    },
+
+    async getProduct(root: any, { _id }: { _id: string }) {
+      return await Product.findById(_id)
+    },
+  },
+
+  Mutation: {
+    async createProduct(root: any, { input }: { input: ProductInput }) {
+      return await Product.create(input)
     },
   },
 }
