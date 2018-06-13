@@ -1,13 +1,19 @@
 import express from 'express'
 import graphqlHTTP from 'express-graphql'
-import mongoose from 'mongoose'
+import Knex from 'knex'
+// import mongoose from 'mongoose'
+import { Model } from 'objection'
+import knexConfig from '../knexfile'
 import schema from './schema'
+
+const knex = Knex(knexConfig.development)
+Model.knex(knex)
 
 const app = express()
 const PORT = 3000
 
-mongoose.Promise = global.Promise
-mongoose.connect('mongodb://localhost/gql_db')
+// mongoose.Promise = global.Promise
+// mongoose.connect('mongodb://localhost/gql_db')
 
 app.use(
   '/g',
