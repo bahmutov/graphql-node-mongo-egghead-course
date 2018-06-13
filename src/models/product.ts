@@ -1,14 +1,25 @@
-import mongoose from 'mongoose'
+import { Model } from 'objection'
 
-const Schema = mongoose.Schema
-const ProductSchema = new Schema({
-  name: {
-    type: String,
-    required: true,
-  },
-  qty: {
-    type: Number,
-  },
-})
+class Product extends Model {
+  static tableName = 'products'
+  static idColumn = '_id'
 
-export default mongoose.model('product', ProductSchema)
+  // validating new instances using json-schema
+  static get jsonSchema() {
+    return {
+      type: 'object',
+      required: ['name', 'qty'],
+
+      properties: {
+        _id: { type: 'integer' },
+        name: { type: 'string' },
+        qty: {
+          type: 'integer',
+          minimum: 0,
+        },
+      },
+    }
+  }
+}
+
+export default Product

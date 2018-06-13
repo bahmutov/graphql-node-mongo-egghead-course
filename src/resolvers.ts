@@ -1,27 +1,16 @@
 import Product from './models/product'
 
-type Product = {
-  _id: string
+type ProductInput = {
   name: string
   qty: number
 }
 
-// const products: Product[] = [
-//   {
-//     _id: '1',
-//     name: 'foo',
-//     qty: 1,
-//   },
-//   {
-//     _id: '2',
-//     name: 'bar',
-//     qty: 2,
-//   },
-// ]
+type WithId = {
+  _id: string
+}
 
-type ProductInput = {
-  name: string
-  qty: number
+type IdAndInput = WithId & {
+  input: ProductInput
 }
 
 export const resolvers = {
@@ -36,24 +25,23 @@ export const resolvers = {
     },
 
     async allProducts() {
-      return await Product.find()
+      return await Product.query()
     },
 
-    async getProduct(root: any, { _id }: { _id: string }) {
-      return await Product.findById(_id)
+    async getProduct(root: any, { _id }: WithId) {
+      return await Product.query().findById(_id)
     },
   },
 
   Mutation: {
+    // creating a single product
     async createProduct(root: any, { input }: { input: ProductInput }) {
-      return await Product.create(input)
+      return await Product.query().insert(input as any)
     },
 
-    async updateProduct(
-      root: any,
-      { _id, input }: { _id: string; input: ProductInput }
-    ) {
-      return await Product.findOneAndUpdate({ _id }, input, { new: true })
+    // updating a product by ID
+    async updateProduct(root: any, { _id, input }: IdAndInput) {
+      return await Product.query().patchAndFetchById(_id, input as any)
     },
   },
 }
