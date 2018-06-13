@@ -43,5 +43,10 @@ export const resolvers = {
     async updateProduct(root: any, { _id, input }: IdAndInput) {
       return await Product.query().patchAndFetchById(_id, input as any)
     },
+
+    async deleteProduct(root: any, { _id }: WithId) {
+      await Product.query().deleteById(_id)
+      return _id
+    },
   },
 }

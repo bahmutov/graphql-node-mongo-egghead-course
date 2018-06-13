@@ -23,6 +23,8 @@ const typeDefs = `
   type Mutation {
     createProduct(input: ProductInput): Product
     updateProduct(_id: ID, input: ProductInput): Product
+    "when deleting an item, just return the ID"
+    deleteProduct(_id: ID): ID
   }
 `
 
