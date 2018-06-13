@@ -2,6 +2,13 @@ Building an Express server with MongoDB and GraphQL
 
 Based on Egghead.io [course](https://egghead.io/lessons/graphql-create-express-server-in-node-js)
 
+## Branches
+
+- `master` GraphQL + Mongoose + MongoDB
+- `objection-1` GraphQL + [objection.js](https://vincit.github.io/objection.js/) + sqlite3
+
+## Install
+
 ```
 npm install
 npm start
