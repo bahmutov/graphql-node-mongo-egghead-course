@@ -4,6 +4,7 @@ import { resolvers } from './resolvers';
 const typeDefs = `
   type Query {
     hello: String!
+    greet (msg: String!): String!
   }
 `
 

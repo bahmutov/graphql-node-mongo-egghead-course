@@ -7,3 +7,26 @@ npm install
 npm start
 open localhost:3000/g
 ```
+
+## Query details
+
+Types with `!` are non-nullable.
+
+Type can require arguments, for example `greet`
+
+```ts
+const typeDefs = `
+  type Query {
+    greet (msg: String!): String!
+  }
+`
+```
+
+To request `greet` use
+
+```
+{
+  greet(msg: "foo")
+}
+```
+
