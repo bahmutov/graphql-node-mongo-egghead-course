@@ -1,4 +1,4 @@
-Building an Express server with MongoDB and GraphQL
+Building an Express server with Objection.js and GraphQL
 
 Based on Egghead.io [course](https://egghead.io/lessons/graphql-create-express-server-in-node-js)
 
@@ -31,7 +31,3 @@ To request `greet` use
   greet(msg: "foo")
 }
 ```
-
-## Running MongoDB
-
-Via docker with `docker run -p 27017:27017 mongo:3` (see logs) or `docker run -p 27017:27017 -d mongo:3` (running in the background)
