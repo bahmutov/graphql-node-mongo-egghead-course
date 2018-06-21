@@ -1,7 +1,7 @@
-import { makeExecutableSchema } from 'graphql-tools'
+import { gql } from 'apollo-server'
 import { resolvers } from './resolvers'
 
-const typeDefs = `
+const typeDefs = gql`
   type Product {
     _id: ID
     name: String!
@@ -10,7 +10,7 @@ const typeDefs = `
 
   type Query {
     hello: String!
-    greet (msg: String!): String!
+    greet(msg: String!): String!
     allProducts: [Product]
     getProduct(_id: ID): Product
   }
@@ -28,7 +28,4 @@ const typeDefs = `
   }
 `
 
-export default makeExecutableSchema({
-  typeDefs,
-  resolvers,
-})
+export default { typeDefs, resolvers }

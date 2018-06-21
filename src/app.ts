@@ -1,9 +1,11 @@
+import { ApolloServer } from 'apollo-server'
 import express from 'express'
-import graphqlHTTP from 'express-graphql'
 import Knex from 'knex'
 import morgan from 'morgan'
 import { Model } from 'objection'
 import schema from './schema'
+
+const server = new ApolloServer(schema)
 
 const knexConfig = require('../knexfile')
 
@@ -15,22 +17,14 @@ const PORT = 3000
 
 app.use(morgan('dev')).set('json spaces', 2)
 
-app.use(
-  '/g',
-  graphqlHTTP({
-    schema,
-    graphiql: true,
-    context: {
-      userId: 1,
-    },
-  } as graphqlHTTP.Options)
-)
-
 app.get('/', (req, res) => {
   return res.json({
     message: 'hello there',
   })
 })
+
+// GraphQL playground at http://localhost:3000/graphql
+server.applyMiddleware({ app })
 
 // Error handling. The `ValidationError` instances thrown by objection.js have a `statusCode`
 // property that is sent as the status code of the response.
