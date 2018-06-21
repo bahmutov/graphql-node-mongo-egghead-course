@@ -2,7 +2,6 @@ import express from 'express'
 import graphqlHTTP from 'express-graphql'
 import Knex from 'knex'
 import morgan from 'morgan'
-// import mongoose from 'mongoose'
 import { Model } from 'objection'
 import schema from './schema'
 
@@ -13,9 +12,6 @@ Model.knex(knex)
 
 const app = express()
 const PORT = 3000
-
-// mongoose.Promise = global.Promise
-// mongoose.connect('mongodb://localhost/gql_db')
 
 app.use(morgan('dev')).set('json spaces', 2)
 
